@@ -161,3 +161,11 @@ function AppProvider() {
   );
 }
 ```
+
+#### Vue
+
+_Coming soon ..._
+
+#### Angular
+
+_Coming soon ..._
