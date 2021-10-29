@@ -74,33 +74,30 @@ There is two elements here, we need to:
 - Receive updates from all `BrowserWindow`, update the main state, and communicate it to other `BrowserWindow`.
 - Send the state to the new `BrowserWindow` when creating it.
 
-In practice, you need to setup the global state, which gives you access to:
-
-- `state`, if you need to use it in the main process.
-- `synchronizeStateIPC`, which you need to use everytime you create a new `BrowserWindow`.
+In practice, you just need to setup the global state:
 
 ```ts
-import { BrowserWindow } from 'electron';
 import { setupGlobalStateIPC } from 'electron-state-ipc';
-
-const { state, synchronizeStateIPC } = setupGlobalStateIPC();
-```
-
-Then, everytime you create a new `BrowserWindow`, you need to call `synchronizeStateIPC`.
-
-```ts
 import { BrowserWindow } from 'electron';
-import { setupGlobalStateIPC } from 'electron-state-ipc';
 
-const { synchronizeStateIPC } = setupGlobalStateIPC();
+setupGlobalStateIPC();
 
-... // you might set up anything else
+/* you might set up anything else and create your BrowserWindow(s) */
+...
 
 const window = new BrowserWindow({
   ...options, // your options
 });
+```
 
-synchronizeStateIPC(window);
+Note that `setupGlobalStateIPC` return the state itself, if you need to use in in the main process:
+
+In practice, you just need to setup the global state:
+
+```ts
+import { setupGlobalStateIPC } from 'electron-state-ipc';
+
+const state = setupGlobalStateIPC();
 ```
 
 ### Preload

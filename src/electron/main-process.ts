@@ -17,5 +17,5 @@ export function setupGlobalStateIPC() {
     });
   });
 
-  return { state };
+  return state;
 }
