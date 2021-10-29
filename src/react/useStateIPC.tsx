@@ -14,8 +14,8 @@ function useStateIPC<T = undefined>(keyIPC: string, initialValue: T): UseStateIP
   });
 
   useEffect(() => {
-    // @ts-expect-error We need to add electron_react_state to window.
-    window.electron_react_state.onState<T>((_, key: string, value: unknown) => {
+    // @ts-expect-error We need to add electron_state_ipc to window.
+    window.electron_state_ipc.onState<T>((_, key: string, value: unknown) => {
       if (key === keyIPC) setStateValue(value as T);
     });
   }, []);

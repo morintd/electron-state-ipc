@@ -25,16 +25,21 @@ export function ElectronStateIPCContextProvider({ children }: Props) {
   const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    // @ts-expect-error We need to add electron_react_state to window.
-    window.electron_react_state.onGlobalState((_, globalState: Record<string, unknown>) => {
+    // @ts-expect-error We need to add electron_state_ipc to window.
+    window.electron_state_ipc.requestGlobalState();
+  }, []);
+
+  useEffect(() => {
+    // @ts-expect-error We need to add electron_state_ipc to window.
+    window.electron_state_ipc.onGlobalState((_, globalState: Record<string, unknown>) => {
       setState(globalState);
       setInitialized(true);
     });
   }, [setState, setInitialized]);
 
   useEffect(() => {
-    // @ts-expect-error We need to add electron_react_state to window.
-    window.electron_react_state.onState((_, key: string, value: unknown) => {
+    // @ts-expect-error We need to add electron_state_ipc to window.
+    window.electron_state_ipc.onState((_, key: string, value: unknown) => {
       setState((previous) => ({
         ...previous,
         [key]: value,
@@ -44,8 +49,8 @@ export function ElectronStateIPCContextProvider({ children }: Props) {
 
   const update = useCallback(
     <T,>(key: string, value: T) => {
-      // @ts-expect-error We need to add electron_react_state to window.
-      window.electron_react_state.updateState(key, value);
+      // @ts-expect-error We need to add electron_state_ipc to window.
+      window.electron_state_ipc.updateState(key, value);
       setState((previous) => ({
         ...previous,
         [key]: value,

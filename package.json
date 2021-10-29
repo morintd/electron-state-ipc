@@ -1,7 +1,7 @@
 {
   "name": "electron-state-ipc",
   "version": "1.0.0",
-  "description": "React hooks to use a synchronized state in browser processes with electron.",
+  "description": "Easily synchronize state between main process and renderer in Electron, using your favorite UI framework (React, Vue, Angular)",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "module": "build/module/index.js",
