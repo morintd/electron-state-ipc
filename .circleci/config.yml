@@ -52,7 +52,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: cd packages/example && package
+      - run: cd packages/example && yarn package
       - run: cd packages/example && yarn e2e
   release:
     <<: *setup
