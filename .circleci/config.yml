@@ -1,5 +1,9 @@
 version: 2.1
 
+orbs:
+  win: circleci/windows@2.2.0
+  node: circleci/node@4.7.0
+
 setup: &setup
   working_directory: ~/repo
   docker:
@@ -48,10 +52,14 @@ jobs:
           at: ~/repo
       - run: yarn tsc
   e2e:
-    <<: *setup
+    executor: win/default
+    working_directory: ~/repo
     steps:
       - attach_workspace:
           at: ~/repo
+      - node/install:
+          install-yarn: true
+          lts: true
       - run: cd packages/example && yarn package
       - run: cd packages/example && yarn e2e
   release:
