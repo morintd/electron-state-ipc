@@ -47,19 +47,20 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: yarn tsc
-  unit:
+  e2e:
     <<: *setup
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: yarn test:coverage -w 1
+      - run: yarn package
+      - run: yarn e2e
   release:
     <<: *setup
     steps:
       - attach_workspace:
           at: ~/repo
       - run: yarn build
-      - run: npx semantic-release
+      - run: mv packages/electron-state-ipc/package.json package.json && npx semantic-release
 workflows:
   master_deploy:
     jobs:
@@ -89,7 +90,7 @@ workflows:
       - tsc:
           requires:
             - install
-      - unit:
+      - e2e:
           requires:
             - install
   renovate_verify:
@@ -106,6 +107,6 @@ workflows:
       - tsc:
           requires:
             - install_without_modules_cache
-      - unit:
+      - e2e:
           requires:
             - install_without_modules_cache
