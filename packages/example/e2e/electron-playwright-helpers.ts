@@ -4,6 +4,8 @@ import fs from 'fs';
 
 import * as ASAR from 'asar';
 
+import appPackage from '../package.json';
+
 export function findLatestBuild(): string {
   // root of your project
   const rootDir = path.resolve('./');
@@ -100,6 +102,24 @@ export function parseElectronApp(buildDir: string): ElectronAppInfo {
       return fileName.endsWith('.exe');
     });
     executable = path.join(buildDir, exe);
+
+    const resourcesDir = path.join(buildDir, 'resources');
+    const resourcesList = fs.readdirSync(resourcesDir);
+    asar = resourcesList.includes('app.asar');
+
+    let packageJson: { main: string; name: string };
+
+    if (asar) {
+      const asarPath = path.join(resourcesDir, 'app.asar');
+      packageJson = JSON.parse(ASAR.extractFile(asarPath, 'package.json').toString('utf8'));
+      main = path.join(asarPath, packageJson.main);
+    } else {
+      packageJson = JSON.parse(fs.readFileSync(path.join(resourcesDir, 'app', 'package.json'), 'utf8'));
+      main = path.join(resourcesDir, 'app', packageJson.main);
+    }
+    name = packageJson.name;
+  } else if (platform === 'linux') {
+    executable = path.join(buildDir, appPackage.productName);
 
     const resourcesDir = path.join(buildDir, 'resources');
     const resourcesList = fs.readdirSync(resourcesDir);
