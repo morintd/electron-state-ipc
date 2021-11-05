@@ -140,6 +140,8 @@ export function parseElectronApp(buildDir: string): ElectronAppInfo {
     throw new Error(`Platform not supported: ${platform}`);
   }
 
+  console.log({ executable, main, asar, name });
+
   return {
     executable,
     main,
