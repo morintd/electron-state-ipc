@@ -53,7 +53,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: cd packages/example && yarn package
-      - run: cd packages/example && yarn e2e
+      # - run: cd packages/example && yarn e2e
+      - store_artifacts:
+        path: packages/example/out
   release:
     <<: *setup
     steps:
