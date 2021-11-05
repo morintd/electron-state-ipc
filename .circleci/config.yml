@@ -57,9 +57,8 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - node/install:
-          install-yarn: true
-          lts: true
+      - run: nvm install --lts
+      - run: nvm use --lts
       - run: cd packages/example && yarn package
       - run: cd packages/example && yarn e2e
   release:
