@@ -1,8 +1,8 @@
 # electron-state-ipc
 
-![npm](https://img.shields.io/npm/v/electron-state-ipc)
+[![npm](https://img.shields.io/npm/v/electron-state-ipc)](https://www.npmjs.com/package/electron-state-ipc)
 [![Build](https://circleci.com/gh/morintd/electron-state-ipc.svg?style=shield)](https://app.circleci.com/pipelines/github/morintd/electron-state-ipc)
-![npm](https://img.shields.io/npm/dm/electron-state-ipc)
+[![npm](https://img.shields.io/npm/dm/electron-state-ipc)](https://www.npmjs.com/package/electron-state-ipc)
 
 Easily synchronize state between main process and renderer in Electron, using your favorite UI framework:
 
