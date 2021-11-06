@@ -55,11 +55,18 @@ jobs:
     executor: win/default
     working_directory: ~/repo
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - checkout
       - run: nvm install --lts
       - run: nvm use --lts
-      - run: npm i -g @electron-forge/cli
+      - restore_cache:
+          keys:
+            - win-node-modules-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+            - node_modules
+          key: win-node-modules-{{ checksum "yarn.lock" }}
       - run: cd packages/example; yarn package
       - run: cd packages/example; yarn e2e
   release:
