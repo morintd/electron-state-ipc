@@ -29,7 +29,7 @@ test('Should sync data between windows', async () => {
   const newPagetext = await newPage.$eval('#text', (el) => el.textContent);
   expect(newPagetext).toBe('foobar');
 
-  newPage.fill('#input', 'foobarfoobar');
+  await newPage.fill('#input', 'foobarfoobar');
   await page.waitForSelector('#text');
   const text = await page.$eval('#text', (el) => el.textContent);
   expect(text).toBe('foobarfoobar');
