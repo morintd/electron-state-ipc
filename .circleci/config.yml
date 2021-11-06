@@ -59,6 +59,7 @@ jobs:
           at: ~/repo
       - run: nvm install --lts
       - run: nvm use --lts
+      - run: npm i -g @electron-forge/cli
       - run: cd packages/example; yarn package
       - run: cd packages/example; yarn e2e
   release:
