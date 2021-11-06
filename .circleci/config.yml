@@ -59,8 +59,8 @@ jobs:
           at: ~/repo
       - run: nvm install --lts
       - run: nvm use --lts
-      - run: cd packages/example && yarn package
-      - run: cd packages/example && yarn e2e
+      - run: cd packages/example; yarn package
+      - run: cd packages/example; yarn e2e
   release:
     <<: *setup
     steps:
