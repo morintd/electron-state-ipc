@@ -2,6 +2,8 @@
   "compilerOptions": {
     "incremental": true,
     "target": "es2017",
+    "outDir": "../../build/main",
+    "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",
     "declaration": true,
@@ -39,7 +41,7 @@
     "types": ["node", "jest"],
     "jsx": "react"
   },
-  "include": ["packages/**/*"],
+  "include": ["src/index.ts", "./global.d.ts"],
   "exclude": ["node_modules/**"],
   "compileOnSave": false
 }

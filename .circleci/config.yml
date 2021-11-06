@@ -1,5 +1,9 @@
 version: 2.1
 
+orbs:
+  win: circleci/windows@2.2.0
+  node: circleci/node@4.7.0
+
 setup: &setup
   working_directory: ~/repo
   docker:
@@ -47,19 +51,31 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run: yarn tsc
-  unit:
-    <<: *setup
+  e2e:
+    executor: win/default
+    working_directory: ~/repo
     steps:
-      - attach_workspace:
-          at: ~/repo
-      - run: yarn test:coverage -w 1
+      - checkout
+      - run: nvm install --lts
+      - run: nvm use --lts
+      - restore_cache:
+          keys:
+            - win-node-modules-{{ checksum "yarn.lock" }}
+      - run: yarn
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+            - node_modules
+          key: win-node-modules-{{ checksum "yarn.lock" }}
+      - run: cd packages/example; yarn package
+      - run: cd packages/example; yarn e2e
   release:
     <<: *setup
     steps:
       - attach_workspace:
           at: ~/repo
       - run: yarn build
-      - run: npx semantic-release
+      - run: mv packages/electron-state-ipc/package.json package.json && npx semantic-release
 workflows:
   master_deploy:
     jobs:
@@ -89,7 +105,7 @@ workflows:
       - tsc:
           requires:
             - install
-      - unit:
+      - e2e:
           requires:
             - install
   renovate_verify:
@@ -106,6 +122,6 @@ workflows:
       - tsc:
           requires:
             - install_without_modules_cache
-      - unit:
+      - e2e:
           requires:
             - install_without_modules_cache

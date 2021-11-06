@@ -1,14 +1,16 @@
 # electron-state-ipc
 
+![npm](https://img.shields.io/npm/v/electron-state-ipc)
+[![Build](https://circleci.com/gh/morintd/electron-state-ipc.svg?style=shield)](https://app.circleci.com/pipelines/github/morintd/electron-state-ipc)
+![npm](https://img.shields.io/npm/dm/electron-state-ipc)
+
 Easily synchronize state between main process and renderer in Electron, using your favorite UI framework:
 
 - React
 - Vue (coming soon)
 - Angular (coming soon)
 
-![npm](https://img.shields.io/npm/v/electron-state-ipc)
-[![Build](https://circleci.com/gh/morintd/electron-state-ipc.svg?style=shield)](https://app.circleci.com/pipelines/github/morintd/electron-state-ipc)
-![npm](https://img.shields.io/npm/dm/electron-state-ipc)
+![Example in practice](https://github.com/morintd/electron-state-ipc/blob/master/example.gif?raw=true)
 
 ## Installation
 
