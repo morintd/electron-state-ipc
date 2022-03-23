@@ -78,7 +78,7 @@
     "@playwright/test": "1.20.0",
     "@types/react": "17.0.42",
     "@types/react-dom": "17.0.14",
-    "@vercel/webpack-asset-relocator-loader": "1.7.0",
+    "@vercel/webpack-asset-relocator-loader": "1.7.2",
     "css-loader": "6.7.1",
     "electron": "17.1.2",
     "fork-ts-checker-webpack-plugin": "7.2.1",
