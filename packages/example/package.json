@@ -76,7 +76,7 @@
     "@electron-forge/maker-zip": "6.0.0-beta.63",
     "@electron-forge/plugin-webpack": "6.0.0-beta.63",
     "@playwright/test": "1.20.1",
-    "@types/react": "17.0.42",
+    "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
     "@vercel/webpack-asset-relocator-loader": "1.7.2",
     "css-loader": "6.7.1",
