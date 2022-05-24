@@ -62,7 +62,7 @@
     "README.md"
   ],
   "dependencies": {
-    "electron": "18.3.0",
+    "electron": "19.0.0",
     "react": "18.1.0"
   }
 }
