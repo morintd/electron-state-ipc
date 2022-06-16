@@ -29,7 +29,7 @@
     "@semantic-release/release-notes-generator": "10.0.3",
     "@types/jest": "28.1.1",
     "@types/node": "16.11.41",
-    "@types/react": "18.0.12",
+    "@types/react": "18.0.13",
     "@typescript-eslint/eslint-plugin": "5.28.0",
     "@typescript-eslint/parser": "5.28.0",
     "cspell": "6.1.2",
