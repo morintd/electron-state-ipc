@@ -27,7 +27,7 @@
     "@semantic-release/commit-analyzer": "9.0.2",
     "@semantic-release/npm": "9.0.1",
     "@semantic-release/release-notes-generator": "10.0.3",
-    "@types/jest": "28.1.1",
+    "@types/jest": "28.1.2",
     "@types/node": "16.11.41",
     "@types/react": "18.0.14",
     "@typescript-eslint/eslint-plugin": "5.28.0",
