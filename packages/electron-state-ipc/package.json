@@ -45,7 +45,7 @@
     "eslint-plugin-react": "7.30.1",
     "eslint-plugin-testing-library": "5.5.1",
     "husky": "8.0.1",
-    "jest": "28.1.1",
+    "jest": "28.1.2",
     "lint-staged": "13.0.3",
     "prettier": "2.7.1",
     "ts-jest": "28.0.5",
